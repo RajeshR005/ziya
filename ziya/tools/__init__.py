@@ -1,3 +1,4 @@
 from .filter_products_tool import filter_products
 from .one_product_tool import one_product_details
-from .manage_cart import manage_cart
+from .manage_cart import manage_cart_items
+from .view_cart_tool import show_orders

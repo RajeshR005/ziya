@@ -2,7 +2,7 @@ from langchain.tools import tool
 import requests
 
 @tool
-def manage_cart(action:str,product_id:int=None,quantity:int=None,cart_item_id:int=None):
+def manage_cart_items(action:str,product_id:int=None,quantity:int=None,cart_item_id:int=None):
    """
     Manage the user's shopping cart.
 

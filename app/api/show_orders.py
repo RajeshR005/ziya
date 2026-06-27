@@ -30,6 +30,7 @@ def get_cart(user_id:int,db:Session=Depends(get_db)):
 
     return{
         "products":cart_li,
+        "un_available_products":un_avil,
         "total_cart_value":total_cart_value
 
     }

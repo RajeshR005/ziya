@@ -5,7 +5,7 @@ from langchain_core.tools import tool
 from langgraph.checkpoint.memory import InMemorySaver
 import requests
 from ziya.tools import *
-from ziya.sysprompt import system_prompt
+from ziya.prompts import system_prompt
 load_dotenv()
 
 memory=InMemorySaver()
@@ -15,7 +15,7 @@ llm=ChatGroq(model="qwen/qwen3.6-27b")
 
 agent=create_agent(
     llm,
-    tools=[filter_products,one_product_details,manage_cart],
+    tools=[filter_products,one_product_details,manage_cart_items,show_orders],
     checkpointer=memory,
     system_prompt=system_prompt
 )
@@ -25,7 +25,7 @@ while True:
     if qn in ["bye","exit"]:
         print("Happy to Help again See yaa..! ")
         break
-    config={"configurable":{"thread_id":"prince"}}
+    config={"configurable":{"thread_id":"Rajesh"}}
     query=agent.invoke({"messages":{"role":"user","content":qn}},config=config)
 
     print(query["messages"][-1].content)
