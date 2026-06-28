@@ -56,25 +56,25 @@
 # if __name__ == "__main__":
 #     seed_reviews()
 
-# from app.db.session import SessionLocal
-# from app.models.product import Product
-# from app.models.review import Review
-# from sqlalchemy import func
+from app.db.session import SessionLocal
+from app.models.product import Product
+from app.models.review import Review
+from sqlalchemy import func
 
-# db = SessionLocal()
+db = SessionLocal()
 
-# products = db.query(Product).all()
+products = db.query(Product).all()
 
-# for product in products:
+for product in products:
 
-#     avg_rating = (
-#         db.query(func.avg(Review.rating))
-#         .filter(Review.product_id == product.id)
-#         .scalar()
-#     )
+    avg_rating = (
+        db.query(func.avg(Review.rating))
+        .filter(Review.product_id == product.id)
+        .scalar()
+    )
 
-#     product.average_rating = round(float(avg_rating), 1)
+    product.average_rating = round(float(avg_rating), 1)
 
-# db.commit()
+db.commit()
 
-# print("Average ratings updated successfully")
+print("Average ratings updated successfully")
