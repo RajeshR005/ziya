@@ -1,13 +1,13 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
 from app.models import *
-from app.deps import get_db
+from app.deps import get_db,get_current_user
 
 router=APIRouter(tags=["Order Management"])
 
 @router.post('/cart_update',description="This Route is for Updating the items in the cart")
-def update_cart(cart_item_id:int,quantity:int,user_id:int=1,db:Session=Depends(get_db)):
-    get_cart_data=db.query(Cart).filter(Cart.id==cart_item_id,Cart.user_id==user_id).first()
+def update_cart(cart_item_id:int,quantity:int,user_data=Depends(get_current_user),db:Session=Depends(get_db)):
+    get_cart_data=db.query(Cart).filter(Cart.id==cart_item_id,Cart.user_id==user_data.id).first()
     if not get_cart_data:
         return{"status":0,"msg":"This item is not exist in the cart try adding again"}
     if quantity<=0:

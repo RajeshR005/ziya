@@ -1,8 +1,10 @@
-from app.api import all_products,one_product,filter_products,category_api,brands_api,top_rated,add_cart,show_orders,get_reviews,cart_update
+from app.api import login,register_user,all_products,one_product,filter_products,category_api,brands_api,top_rated,add_cart,show_orders,get_reviews,cart_update
 from fastapi import APIRouter
 
 api_router=APIRouter(prefix='/ziya')
 
+api_router.include_router(register_user.router)
+api_router.include_router(login.router)
 api_router.include_router(all_products.router)
 api_router.include_router(one_product.router)
 api_router.include_router(filter_products.router)

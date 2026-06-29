@@ -1,13 +1,13 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
-from app.deps import get_db
+from app.deps import get_db,get_current_user
 from app.models import *
 
 router=APIRouter(tags=["Order Management"])
 
 @router.get('/get_cart',description="This Route is for getting the items from the cart")
-def get_cart(user_id:int,db:Session=Depends(get_db)):
-    get_data=db.query(Cart).filter(Cart.user_id==user_id).all()
+def get_cart(user_data=Depends(get_current_user),db:Session=Depends(get_db)):
+    get_data=db.query(Cart).filter(Cart.user_id==user_data.id).all()
     if not get_data:
         return{"status":0,"msg":"There is no items in the Cart go explore products"}
     cart_li=[]
@@ -22,6 +22,7 @@ def get_cart(user_id:int,db:Session=Depends(get_db)):
             })
         else:
             cart_li.append({
+                "cart_item_id":i.id,
                 "product_name":get_product.product_name,
                 "brand":get_product.brand,
                 "price":get_product.price,

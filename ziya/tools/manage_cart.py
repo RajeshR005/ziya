@@ -1,5 +1,6 @@
 from langchain.tools import tool
 import requests
+from ziya.tools.auth_tool import auth_headers
 
 @tool
 def manage_cart_items(action:str,product_id:int=None,quantity:int=None,cart_item_id:int=None):
@@ -30,20 +31,18 @@ def manage_cart_items(action:str,product_id:int=None,quantity:int=None,cart_item
    if action=="add":
         response=requests.post("http://127.0.0.1:8000/ziya/cart",params={
             "product_id":product_id,
-            "user_id":1,
             "quantity":quantity
 
-        })
+        },headers=auth_headers())
         return str(response.json())
         
    elif action == "update":
         response=requests.post("http://127.0.0.1:8000/ziya/cart_update",
                               params={
                                   "cart_item_id":cart_item_id,
-                                  "user_id":1,
                                   "quantity":quantity
                                   
-                              })
+                              },headers=auth_headers())
         return str(response.json())
 
 

@@ -15,7 +15,7 @@ llm=ChatGroq(model="qwen/qwen3.6-27b")
 
 agent=create_agent(
     llm,
-    tools=[filter_products,one_product_details,manage_cart_items,show_orders],
+    tools=[login,filter_products,one_product_details,manage_cart_items,show_orders],
     checkpointer=memory,
     system_prompt=system_prompt
 )

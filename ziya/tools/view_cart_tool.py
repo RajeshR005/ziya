@@ -1,8 +1,9 @@
 from langchain.tools import tool
 import requests
+from ziya.tools.auth_tool import auth_headers
 
 @tool
-def show_orders(user_id:int):
+def show_orders():
     """
     Retrieve the current user's order or cart summary.
 
@@ -11,9 +12,6 @@ def show_orders(user_id:int):
     - Check their current orders
     - See items they have added to purchase
     - Verify order/cart contents
-
-    Required input:
-    - user_id: Unique identifier of the user
 
     Returns:
     - List of items in the user's cart/order
@@ -25,8 +23,6 @@ def show_orders(user_id:int):
     - Do not assume or modify data.
     - Always display exactly what the tool returns.
     """
-    response=requests.get("http://127.0.0.1:8000/ziya/get_cart",params={
-        "user_id":user_id
-    })
+    response=requests.get("http://127.0.0.1:8000/ziya/get_cart",headers=auth_headers())
 
     return str(response.json())
