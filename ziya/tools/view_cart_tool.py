@@ -1,7 +1,11 @@
 from langchain.tools import tool
 import requests
 from ziya.tools.auth_tool import auth_headers
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
+BASE_API_URL=os.getenv("BASE_API_URL")
 @tool
 def show_orders():
     """
@@ -23,6 +27,6 @@ def show_orders():
     - Do not assume or modify data.
     - Always display exactly what the tool returns.
     """
-    response=requests.get("http://127.0.0.1:8000/ziya/get_cart",headers=auth_headers())
+    response=requests.get(f"{BASE_API_URL}/get_cart",headers=auth_headers())
 
     return str(response.json())

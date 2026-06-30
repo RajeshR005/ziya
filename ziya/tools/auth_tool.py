@@ -1,7 +1,11 @@
 import requests
 from langchain.tools import tool
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
-BASE_URL = "http://127.0.0.1:8000/ziya"
+BASE_API_URL=os.getenv("BASE_API_URL")
+BASE_URL = BASE_API_URL
 
 ACCESS_TOKEN = None
 

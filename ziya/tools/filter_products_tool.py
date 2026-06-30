@@ -1,6 +1,10 @@
 from langchain.tools import tool
 import requests
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
+BASE_API_URL=os.getenv("BASE_API_URL")
 
 @tool
 def filter_products(
@@ -41,7 +45,7 @@ def filter_products(
     """
 
     response = requests.get(
-        "http://127.0.0.1:8000/ziya/filter_products/",
+        f"{BASE_API_URL}/filter_products/",
         params={
             "brand":brand,
             "category":category,

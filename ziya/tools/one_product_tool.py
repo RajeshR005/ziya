@@ -1,6 +1,10 @@
 from langchain.tools import tool
 import requests
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
+BASE_API_URL=os.getenv("BASE_API_URL")
 
 @tool
 def one_product_details(product_id: int):
@@ -21,7 +25,7 @@ def one_product_details(product_id: int):
     - Customer reviews
 """
      
-    response=requests.get(f"http://127.0.0.1:8000/ziya/get_one_product/{product_id}")
+    response=requests.get(f"{BASE_API_URL}/get_one_product/{product_id}")
                         
     
     return str(response.json())
