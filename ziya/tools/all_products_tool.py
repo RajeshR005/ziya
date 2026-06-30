@@ -6,6 +6,7 @@ import os
 
 BASE_API_URL=os.getenv("BASE_API_URL")
 
+print(BASE_API_URL)
 
 @tool
 def all_products_details():
