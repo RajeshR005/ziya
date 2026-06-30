@@ -1,4 +1,4 @@
-from app.api import login,register_user,all_products,one_product,filter_products,category_api,brands_api,top_rated,add_cart,show_orders,get_reviews,cart_update
+from app.api import login,register_user,all_products,one_product,filter_products,category_api,brands_api,top_rated,add_cart,show_orders,get_reviews,cart_update,chat
 from fastapi import APIRouter
 
 api_router=APIRouter(prefix='/ziya')
@@ -15,3 +15,4 @@ api_router.include_router(add_cart.router)
 api_router.include_router(show_orders.router)
 api_router.include_router(get_reviews.router)
 api_router.include_router(cart_update.router)
+api_router.include_router(chat.router)

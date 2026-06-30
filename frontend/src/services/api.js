@@ -1,4 +1,4 @@
-const API_BASE = 'http://127.0.0.1:8000/ziya';
+const API_URL = "https://ziya-backend.onrender.com/ziya";
 
 /**
  * Generic fetch wrapper with error handling.

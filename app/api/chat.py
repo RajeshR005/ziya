@@ -1,8 +1,3 @@
-"""
-Chat API endpoint for the Ziya frontend.
-This is a NEW endpoint — does NOT modify any existing backend functionality.
-"""
-
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from typing import Optional
@@ -79,9 +74,6 @@ class ChatResponse(BaseModel):
 def chat(request: ChatRequest):
     try:
         config = {"configurable": {"thread_id": request.thread_id}}
-
-        # If user provides an access token, update the global auth token
-        # (This handles the auth bridging between the React UI and the CLI-based agent tools)
         user_message = request.message
         if request.access_token:
             import ziya.tools.auth_tool as auth_tool

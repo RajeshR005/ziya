@@ -1,10 +1,29 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routers import api_router
-from app.api.chat import router as chat_router
 
 
 app=FastAPI(title="Ziya")
+
+@app.get("/")
+def home():
+    return {
+        "project": "Ziya AI Shopping Assistant",
+        "description": "An AI-powered shopping assistant that enables product discovery, conversational search, cart management, and JWT-based authentication using an agentic workflow.",
+        "tech_stack": [
+            "FastAPI",
+            "LangChain",
+            "LangGraph",
+            "Groq",
+            "MySQL",
+            "JWT Authentication"
+        ],
+        "status": "Running",
+        "version": "1.0.0",
+        "documentation": "/docs",
+        "github": "https://github.com/RajeshR005/ziya",
+        "developer": "Rajesh R"
+    }
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,4 +34,4 @@ app.add_middleware(
 )
 
 app.include_router(api_router)
-app.include_router(chat_router, prefix="/ziya")
+
