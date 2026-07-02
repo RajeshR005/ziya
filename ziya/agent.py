@@ -10,7 +10,7 @@ load_dotenv()
 
 memory=InMemorySaver()
 
-llm=ChatGroq(model="qwen/qwen3.6-27b")
+llm=ChatGroq(model="qwen/qwen3-32b")
 
 
 agent=create_agent(

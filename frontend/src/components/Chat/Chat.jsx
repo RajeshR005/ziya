@@ -4,11 +4,11 @@ import ReactMarkdown from 'react-markdown';
 import styles from './Chat.module.css';
 
 const SUGGESTIONS = [
-  'Show me laptops under ₹80,000',
-  'Find Samsung phones',
-  'What are the top rated products?',
-  'Compare gaming laptops',
-  'Show Apple products',
+  "Suggest a gaming laptop with RTX graphics",
+  "What are the top-rated products?",
+  "Show me smartphones under ₹80,000",
+  "Show Apple products",
+  "Show headphones with a rating above 4.5",
 ];
 
 export default function Chat({ messages, isLoading, onSendMessage }) {
