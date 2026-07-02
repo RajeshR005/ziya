@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
-from ziya.tools import filter_products, one_product_details, manage_cart_items, show_orders, login
+from ziya.tools import get_all_brands,get_all_categories,filter_products, one_product_details, manage_cart_items, show_orders, login
 from ziya.prompts import system_prompt
 
 load_dotenv()
@@ -21,7 +21,7 @@ llm = ChatGroq(model="qwen/qwen3-32b")
 
 agent = create_agent(
     llm,
-    tools=[filter_products, one_product_details, manage_cart_items, show_orders],
+    tools=[get_all_categories,get_all_brands,filter_products, one_product_details, manage_cart_items, show_orders],
     checkpointer=memory,
     system_prompt=system_prompt,
 )

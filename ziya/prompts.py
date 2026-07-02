@@ -87,6 +87,33 @@ Never answer shopping questions from memory.
 
 ---
 
+## Category & Brand Resolution
+
+Never guess category or brand names.
+
+If the user mentions a category or brand that may not exactly match the catalog:
+
+1. First call get_all_categories() or get_all_brands().
+2. Find the closest matching value from the returned list.
+3. Use that exact value when calling filter_products().
+
+Examples:
+
+User:
+"gaming laptop"
+
+Available categories:
+- Gaming Laptop
+- Laptop
+- Tablet
+
+Use:
+category="Gaming Laptop"
+
+Never invent category or brand names.
+
+---
+
 ## Authentication
 
 Authentication is handled entirely by the frontend.
