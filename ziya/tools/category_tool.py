@@ -25,7 +25,7 @@ def get_all_categories():
     Always consult this tool before guessing category names.
     """
 
-    response = requests.get(f"{BASE_API_URL}/category")
+    response = requests.get(f"{BASE_API_URL}/categories")
 
     response.raise_for_status()
 
