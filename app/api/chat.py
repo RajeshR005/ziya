@@ -15,7 +15,7 @@ router = APIRouter(tags=["Chat"])
 # Shared memory for all chat sessions
 memory = InMemorySaver()
 
-llm = ChatGroq(model="qwen/qwen3-32b")
+llm = ChatGroq(model="openai/gpt-oss-120b")
 
 
 
